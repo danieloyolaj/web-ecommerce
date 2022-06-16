@@ -1,124 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    <div class="col">
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-sudadera-gris.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$32</h5>
-              <h5 class="card-title">Sudadera gris</h5>
-              <p class="card-text">Logo negro</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col">
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-hodie-roja.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$36</h5>
-              <h5 class="card-title">Hoodie rojo</h5>
-              <p class="card-text">Logo blanco</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col">
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-playera-negra.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$18</h5>
-              <h5 class="card-title">Playera negra</h5>
-              <p class="card-text">Logo blanco</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col">
-            <div class="card bg-light" style="width: 18rem;">
-                <img src="/img/item-sudadera-gris-logo-rojo.png" class="card-img-top" alt="Hoodie">
-                <div class="card-body">
-                <h5 class="card-title rounded float-end">$18</h5>
-                <h5 class="card-title">Playera blanca</h5>
-                <p class="card-text">Logo rojo</p>
-                <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-                <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-                <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-                <a href="product.html" class="btn btn-danger">A&ntilde;adir al carrito</a>
-                </div>
-            </div><!-- card -->
-        </div><!-- col -->
+  <h3><center>JavaScript Click Counter</center></h3>
+<div>
+    <center><h3 id="counter-label">0</h3></center>
+</div>
+<center>
+    <div>
+        <button onclick="incrementClick()">Click me</button>
+        <button onclick="resetCounter()">Reset</button>
+    </div>
+</center>
+<script>
+  var counterVal = 0;
 
-        <div class="col">
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-hodie-negro.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$32</h5>
-              <h5 class="card-title">Hoodie negro</h5>
-              <p class="card-text">Logo blanco</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col" >
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-hodie-roja.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$36</h5>
-              <h5 class="card-title">Hoodie roja</h5>
-              <p class="card-text">Logo blanco</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col">
-        <div class="card bg-light" style="width: 18rem;">
-            <img src="/img/item-playera-negra.png" class="card-img-top" alt="Hoodie">
-            <div class="card-body">
-              <h5 class="card-title rounded float-end">$18</h5>
-              <h5 class="card-title">Playera negra</h5>
-              <p class="card-text">Logo blanco</p>
-              <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-              <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-              <a href="product.html" class="btn btn-danger">Ver producto</a>
-            </div>
-          </div><!-- card -->
-        </div><!-- col -->
-        <div class="col">
-            <div class="card bg-light" style="width: 18rem;">
-                <img src="/img/item-sudadera-gris-logo-rojo.png" class="card-img-top" alt="Hoodie">
-                <div class="card-body">
-                <h5 class="card-title rounded float-end">$18</h5>
-                <h5 class="card-title">Playera blanca</h5>
-                <p class="card-text">Logo rojo</p>
-                <img src="/img/item-color-black.png" alt="Item color Black" srcset="">
-                <img src="/img/item-color-red.png" alt="Item color Black" srcset="">
-                <img src="/img/item-color-white.png" alt="Item color Black" srcset="">
-                <a href="product.html" class="btn btn-danger">A&ntilde;adir al carrito</a>
-                </div>
-            </div><!-- card -->
-        </div><!-- col -->
+function incrementClick() {
+    updateDisplay(++counterVal);
+}
+
+function resetCounter() {
+    counterVal = 0;
+    updateDisplay(counterVal);
+}
+
+function updateDisplay(val) {
+    document.getElementById("counter-label").innerHTML = val;
+}
+</script>
 </body>
 </html>

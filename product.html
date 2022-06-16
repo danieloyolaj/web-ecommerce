@@ -25,5 +25,35 @@
     </div><!-- container -->
     <script type="module" src="/js/product.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>  
+    <script>
+     //Incrementing items to the cart
+        window.onload = function(){
+        let clickButton = document.getElementById('increaseBtn');
+        clickButton.onclick = incrementCounter;
+
+        let unclickButton = document.getElementById('decreaseBtn');
+        unclickButton.onclick = decreaseCounter;
+    }
+
+
+    var counterVal = 1;
+
+        incrementCounter = function() {
+            updateDisplay(++counterVal);
+        }
+
+        decreaseCounter = function() {
+            updateDisplay(--counterVal);
+        }
+
+        function updateDisplay(val) {
+            document.getElementById("mycounter").innerHTML = val;
+        }
+
+        
+
+
+// 
+    </script>
 </body>
 </html>
