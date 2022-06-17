@@ -16,13 +16,6 @@ for (const key in products) {
 
 let cart = JSON.parse(localStorage.getItem('item')) || [];
 
-//Multiplying the price
-// let newValue = document.querySelector('#mycounter').value;
-// newPrice = Number(selectedProduct[0].price) * counterVal;
-// console.log(selectedProduct[0].price);
-// console.log(counterVal);
-// console.log("New price: " + newPrice);
-
 //Gets the clicked product
 function getProductById(){
     let html = `
@@ -51,8 +44,7 @@ function generateCartList(){
             <button id="increaseBtn" type="button" title="Increase"><i class="bi bi-plus"></i></button>
             <img src="/img/trashcan.png" alt="Trash can" class="border float-end">
         </div>
-    <p class="fw-bold">Subtotal: <span class="float-end">$${cart[i].price}</span></p>
-    <button class="btn btn-danger d-grid gap-2 col-6 mx-auto">Ir al carrito</button>`;
+    <p class="fw-bold">Subtotal: <span class="float-end">$${cart[i].price}</span></p>`;
     }
     let container = document.getElementById('listCart');
     container.innerHTML = html;
