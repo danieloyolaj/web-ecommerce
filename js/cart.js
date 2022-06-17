@@ -33,10 +33,18 @@ function generateCartList(){
 generateCartList();
 
 function removeItem(id){
-    cart.splice(id, 1);
+    let filtered = cart.filter(x => x !== id);
+    cart.splice(filtered, 1);
     generateCartList();
 }
 
+function clearLocalStorage(){
+    localStorage.clear();
+}
+
+
+
+window.clearLocalStorage = clearLocalStorage;
 window.removeItem = removeItem;
 
 //Multiplying the price

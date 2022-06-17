@@ -34,7 +34,7 @@
                 <p class="border-bottom mt-4">Subtotal: <span class="float-end">$18</span></p> 
                 <p class="border-bottom mt-4">Envío: <span class="float-end">$7</span></p>
                 <p class="fw-bold border-bottom mt-4">Total: <span class="float-end">$25</span></p>
-                <button type="button" class="btn btn-danger d-grid gap-2 col-6 mx-auto mb-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar compra</button>
+                <button type="button" onclick="clearLocalStorage()" class="btn btn-danger d-grid gap-2 col-6 mx-auto mb-5 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar compra</button>
             
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,8 +51,8 @@
                         </p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Descargar comprobante</button>
+                        <button id="cerrar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="descargar" type="button" class="btn btn-danger" data-bs-dismiss="modal">Descargar comprobante</button>
                         </div>
                     </div>
                     </div>
@@ -62,6 +62,15 @@
         </div>
     </div><!-- container -->
     <script type="module" src="/js/cart.js"></script>
+    <script>
+        document.getElementById('cerrar').addEventListener('click', () => {
+        location.href = 'index.html';
+        });
+        
+        document.getElementById('descargar').addEventListener('click', () => {
+        location.href = 'index.html';
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>  
 </body>
 </html>
