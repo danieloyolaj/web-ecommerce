@@ -6,7 +6,6 @@ import {products} from './data.js';
 let param = window.location.href;
 let id = param.toString().split('=');
 
-
 //Get the product from products
 let selectedProduct = [];
 for (const key in products) {
@@ -15,80 +14,86 @@ for (const key in products) {
     }
 }
 
-    
+let cart = JSON.parse(localStorage.getItem('item')) || [];
 
-//Selecting the size
-function selectSize(){
-    document.getElementById('id').style.backgroundColor = 'red';
-}
-// selectSize();
-
+//Multiplying the price
+// let newValue = document.querySelector('#mycounter').value;
+// newPrice = Number(selectedProduct[0].price) * counterVal;
+// console.log(selectedProduct[0].price);
+// console.log(counterVal);
+// console.log("New price: " + newPrice);
 
 //Gets the clicked product
 function getProductById(){
-    let newPrice;
-    //Multiplying the price
-    let newValue = document.querySelector('#mycounter').value;
-    newPrice = Number(selectedProduct[0].price) * counterVal;
-    console.log(selectedProduct[0].price);
-    console.log(counterVal);
-    console.log("New price: " + newPrice);
-    let html = `<div class="col-lg-8 col-md-6">
+    let html = `
             <h1 class="mt-5">${selectedProduct[0].name}</h1>
             <h1 class="mt-5">$${selectedProduct[0].price}</h1>
-            <p class="mt-4">Productos oficiales de Academlo</p>
-            <h3 class="mt-5">Colores</h3>
-            <img class="border" src="/img/item-playera-negra.jpg" alt="Colores" width="100px" height="100px" srcset="">
-            <img src="/img/item-sudadera-gris-logo-rojo.jpg" width="100px" height="100px" alt="Colores" srcset="">
-            <h3 class="mt-5">Tallas</h3>
-                <div class="mt-4">
-                    <span class="border p-3 " id="s" onclick="selectSize(id)">S</span>
-                    <span class="border p-3 " id="m">M</span>
-                    <span class="border p-3 " id="l">L</span>
-                    <span class="border p-3 " id="xl">XL</span>
-                    <span class="border p-3 " id="2xl">2XL</span>
-                    <span class="border p-3 " id="3xl">3XL</span>
-                </div>
-            
-            </div><!-- col-lg-8 col-md-6 -->
+    <button class="btn btn-danger btn-lg mt-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onclick="addToCart(${selectedProduct[0].id})">A&ntilde;adir al carrito</button>
 
-            <div class="col-lg-4 col-md-6 bg-light">
-                <img src="/img/item-hodie-negro.png" width="400px" alt="" srcset="">
-            </div>
-            
-            <div class="d-grid gap-2 col-6 mx-auto justify-content-md-center mt-5">
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 id="offcanvasRightLabel">Carrito de compras</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    
-                    <div class="offcanvas-body border-top mt-4">
-                        <div class="col bg-light mb-4 p-3 pb-5">
-                            <img src="/img/${selectedProduct[0].image}" width="100px" height="100px" alt="Colores" srcset="">
-                            <p class="fw-bold">${selectedProduct[0].name} <span class="float-end">$${selectedProduct[0].price}</span> </p>
-                            <p>Talla: S</p>
-                            <p>Color: <img src="/img/item-color-red.png" alt="Item color Black" srcset=""></p>
-                            <button id="decreaseBtn">-</button>
-                            <span id="mycounter">${counterVal}</span>
-                            <button id="increaseBtn">+</button>
-                            <img src="/img/trashcan.png" alt="Trash can" class="border float-end">
-                        </div>
-                        <p class="fw-bold">Subtotal: <span class="float-end">$${newPrice}</span></p>
-                        <button class="btn btn-danger d-grid gap-2 col-6 mx-auto">Ir al carrito</button>
-                    </div><!--  offcanvas-body -->
-                </div><!--  offcanvas -->
-            </div><!-- d-grid gap-2 col-6 mx-auto  -->`;
-            
+            `;
     let container = document.getElementById('productId');
-    
     container.innerHTML = html;
-    
-    
 }
 getProductById();
-    
-    
+generateCartList();
 
+function generateCartList(){
+    //let tempCart = JSON.parse(localStorage.getItem('item')) || [];
+    let html = '';
+    for(let i = 0; i < cart.length; i++){
+        html += `<div class="col bg-light mb-4 p-3 pb-5">
+            <img src="/img/${cart[i].image}" width="100" alt="Colores" srcset="">
+            <p class="fw-bold">${cart[i].name} <span class="float-end">$${cart[i].price}</span> </p>
+            <p>Talla: ${cart[i].size}</p>
+            <p>Color: ${cart[i].color}</p>
+            <button id="decreaseBtn" type="button" title="Decrease"><i class="bi bi-dash"></i></button>
+            <span id="mycounter">1</span>
+            <button id="increaseBtn" type="button" title="Increase"><i class="bi bi-plus"></i></button>
+            <img src="/img/trashcan.png" alt="Trash can" class="border float-end">
+        </div>
+    <p class="fw-bold">Subtotal: <span class="float-end">$${cart[i].price}</span></p>
+    <button class="btn btn-danger d-grid gap-2 col-6 mx-auto">Ir al carrito</button>`;
+    }
+    let container = document.getElementById('listCart');
+    container.innerHTML = html;
+}
+
+function addToCart(id){
+    //Call back function
+    function cbFindId(products){
+        return products.id == id;
+    }
+    let selectedItem = products.find(cbFindId);
+    
+    cart.push(selectedItem);
+    localStorage.setItem('item', JSON.stringify(cart));
+}
+
+    //Incrementing items to the cart
+    //     window.onload = function(){
+    //     let clickButton = document.getElementById('increaseBtn');
+    //     clickButton.onclick = incrementCounter;
+
+    //     let unclickButton = document.getElementById('decreaseBtn');
+    //     unclickButton.onclick = decreaseCounter;
+    // }
+
+
+    // var counterVal = 1;
+
+    //     incrementCounter = function() {
+    //         updateDisplay(++counterVal);
+    //     }
+
+    //     decreaseCounter = function() {
+    //         updateDisplay(--counterVal);
+    //     }
+
+    //     function updateDisplay(val) {
+    //         document.getElementById("mycounter").innerHTML = val;
+    //     }
+
+window.addToCart = addToCart; //Esto hace que esta funcion sea visible en el html
+window.generateCartList = generateCartList;
 
 
